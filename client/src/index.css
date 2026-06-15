@@ -184,6 +184,18 @@
   .animate-scale-in {
     animation: scaleIn 0.3s ease-out;
   }
+
+  /* Respect prefers-reduced-motion */
+  @media (prefers-reduced-motion: reduce) {
+    .animate-fade-in,
+    .animate-slide-in-up,
+    .animate-scale-in,
+    * {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
   /**
    * Custom container utility that centers content and adds responsive padding.
    *

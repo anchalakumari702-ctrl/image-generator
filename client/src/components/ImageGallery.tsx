@@ -111,6 +111,7 @@ export default function ImageGallery() {
               <img
                 src={image.imageUrl}
                 alt={image.prompt}
+                loading="lazy"
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
               />
               {/* Overlay Actions */}
@@ -120,6 +121,7 @@ export default function ImageGallery() {
                   variant="secondary"
                   className="bg-white/90 hover:bg-white text-black"
                   onClick={() => handleDownload(image.imageUrl, image.prompt)}
+                  aria-label="Download image"
                 >
                   <Download className="w-4 h-4" />
                 </Button>
@@ -128,6 +130,7 @@ export default function ImageGallery() {
                   variant="secondary"
                   className="bg-white/90 hover:bg-white text-black"
                   onClick={() => handleCopy(image.imageUrl)}
+                  aria-label="Copy image to clipboard"
                 >
                   <Copy className="w-4 h-4" />
                 </Button>
@@ -137,6 +140,7 @@ export default function ImageGallery() {
                   className="bg-red-500/90 hover:bg-red-600 text-white"
                   onClick={() => setDeleteConfirm(image.id)}
                   disabled={deleteMutation.isPending}
+                  aria-label="Delete image"
                 >
                   <Trash2 className="w-4 h-4" />
                 </Button>

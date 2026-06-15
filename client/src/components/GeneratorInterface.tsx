@@ -91,6 +91,8 @@ export default function GeneratorInterface({ onSuccess }: GeneratorInterfaceProp
             placeholder="A serene mountain landscape with golden sunset, misty valleys, and a crystal-clear lake reflecting the sky..."
             className="w-full h-24 px-4 py-3 rounded-lg border border-border bg-background text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-accent/50 focus:border-accent resize-none"
             disabled={isLoading}
+            aria-label="Image description prompt"
+            aria-describedby="prompt-help"
           />
         </div>
 
@@ -176,7 +178,7 @@ export default function GeneratorInterface({ onSuccess }: GeneratorInterfaceProp
         </div>
 
         {/* Info Text */}
-        <p className="text-xs text-muted-foreground text-center animate-fade-in" style={{ animationDelay: '0.4s' }}>
+        <p id="prompt-help" className="text-xs text-muted-foreground text-center animate-fade-in" style={{ animationDelay: '0.4s' }}>
           Image generation typically takes 5-30 seconds. Please be patient while we create your masterpiece.
         </p>
       </div>
