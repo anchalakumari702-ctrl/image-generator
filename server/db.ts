@@ -1,6 +1,6 @@
-import { eq } from "drizzle-orm";
+import { eq, desc, and } from "drizzle-orm";
 import { drizzle } from "drizzle-orm/mysql2";
-import { InsertUser, users } from "../drizzle/schema";
+import { InsertUser, users, generatedImages, imageGenerations } from "../drizzle/schema";
 import { ENV } from './_core/env';
 
 let _db: ReturnType<typeof drizzle> | null = null;
@@ -89,4 +89,97 @@ export async function getUserByOpenId(openId: string) {
   return result.length > 0 ? result[0] : undefined;
 }
 
-// TODO: add feature queries here as your schema grows.
+export async function getUserImages(userId: number, limit: number = 20, offset: number = 0) {
+  const db = await getDb();
+  if (!db) return [];
+
+  return db
+    .select()
+    .from(users)
+    .where(eq(users.id, userId))
+    .limit(limit)
+    .offset(offset);
+}
+
+export async function createGeneratedImage(
+  userId: number,
+  prompt: string,
+  style: string,
+  aspectRatio: string,
+  imageUrl: string,
+  imageKey: string,
+  generationId: string
+) {
+  const db = await getDb();
+  if (!db) throw new Error("Database not available");
+
+  const result = await db.insert(generatedImages).values({
+    userId,
+    prompt,
+    style,
+    aspectRatio,
+    imageUrl,
+    imageKey,
+    generationId,
+  });
+
+  return result;
+}
+
+export async function getGeneratedImagesByUserId(userId: number, limit: number = 50, offset: number = 0) {
+  const db = await getDb();
+  if (!db) return [];
+
+  return db
+    .select()
+    .from(generatedImages)
+    .where(eq(generatedImages.userId, userId))
+    .orderBy(desc(generatedImages.createdAt))
+    .limit(limit)
+    .offset(offset);
+}
+
+export async function deleteGeneratedImage(imageId: number, userId: number) {
+  const db = await getDb();
+  if (!db) throw new Error("Database not available");
+
+  return db
+    .delete(generatedImages)
+    .where(and(eq(generatedImages.id, imageId), eq(generatedImages.userId, userId)));
+}
+
+export async function createImageGeneration(
+  userId: number,
+  prompt: string,
+  style: string,
+  aspectRatio: string,
+  imageCount: number
+) {
+  const db = await getDb();
+  if (!db) throw new Error("Database not available");
+
+  const result = await db.insert(imageGenerations).values({
+    userId,
+    prompt,
+    style,
+    aspectRatio,
+    imageCount,
+    status: "pending",
+  });
+
+  return result;
+}
+
+export async function updateImageGenerationStatus(
+  generationId: number,
+  status: "pending" | "completed" | "failed",
+  errorMessage?: string
+) {
+  const db = await getDb();
+  if (!db) throw new Error("Database not available");
+
+  return db
+    .update(imageGenerations)
+    .set({ status, errorMessage })
+    .where(eq(imageGenerations.id, generationId));
+}
