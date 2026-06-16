@@ -43,10 +43,26 @@ const trpcClient = trpc.createClient({
     httpBatchLink({
       url: "/api/trpc",
       transformer: superjson,
-      fetch(input, init) {
+      async fetch(input, init) {
         // Get Firebase token from localStorage
         const token = typeof window !== "undefined" ? localStorage.getItem("firebaseToken") : null;
-        const headers: Record<string, string> = token ? { Authorization: `Bearer ${token}` } : {};
+        
+        // If no token, try to get it from Firebase Auth
+        let authToken = token;
+        if (!authToken && typeof window !== "undefined") {
+          try {
+            const { auth } = await import("./lib/firebase");
+            const currentUser = auth.currentUser;
+            if (currentUser) {
+              authToken = await currentUser.getIdToken(true);
+              localStorage.setItem("firebaseToken", authToken);
+            }
+          } catch (error) {
+            console.debug("Could not refresh Firebase token:", error);
+          }
+        }
+
+        const headers: Record<string, string> = authToken ? { Authorization: `Bearer ${authToken}` } : {};
         
         return globalThis.fetch(input, {
           ...(init ?? {}),

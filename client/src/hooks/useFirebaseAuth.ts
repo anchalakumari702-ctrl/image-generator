@@ -28,14 +28,20 @@ export const useFirebaseAuth = () => {
       if (user) {
         try {
           // Get ID token to send to backend
-          const idToken = await user.getIdToken();
+          const idToken = await user.getIdToken(true); // Force refresh
           // Store token in localStorage for API calls
           localStorage.setItem("firebaseToken", idToken);
+          localStorage.setItem("firebaseUser", JSON.stringify({
+            uid: user.uid,
+            email: user.email,
+            displayName: user.displayName,
+          }));
         } catch (error) {
           console.error("Failed to get ID token:", error);
         }
       } else {
         localStorage.removeItem("firebaseToken");
+        localStorage.removeItem("firebaseUser");
       }
       
       setAuthState({
@@ -52,6 +58,9 @@ export const useFirebaseAuth = () => {
     try {
       setAuthState((prev) => ({ ...prev, loading: true, error: null }));
       const result = await createUserWithEmailAndPassword(auth, email, password);
+      // Get token immediately after signup
+      const idToken = await result.user.getIdToken(true);
+      localStorage.setItem("firebaseToken", idToken);
       return result.user;
     } catch (error: any) {
       const errorMessage = error.message || "Signup failed";
@@ -66,6 +75,9 @@ export const useFirebaseAuth = () => {
     try {
       setAuthState((prev) => ({ ...prev, loading: true, error: null }));
       const result = await signInWithEmailAndPassword(auth, email, password);
+      // Get token immediately after login
+      const idToken = await result.user.getIdToken(true);
+      localStorage.setItem("firebaseToken", idToken);
       return result.user;
     } catch (error: any) {
       const errorMessage = error.message || "Login failed";
@@ -81,6 +93,9 @@ export const useFirebaseAuth = () => {
       setAuthState((prev) => ({ ...prev, loading: true, error: null }));
       const provider = new GoogleAuthProvider();
       const result = await signInWithPopup(auth, provider);
+      // Get token immediately after Google login
+      const idToken = await result.user.getIdToken(true);
+      localStorage.setItem("firebaseToken", idToken);
       return result.user;
     } catch (error: any) {
       const errorMessage = error.message || "Google login failed";
@@ -95,6 +110,7 @@ export const useFirebaseAuth = () => {
     try {
       setAuthState((prev) => ({ ...prev, loading: true, error: null }));
       localStorage.removeItem("firebaseToken");
+      localStorage.removeItem("firebaseUser");
       await signOut(auth);
     } catch (error: any) {
       const errorMessage = error.message || "Logout failed";
@@ -108,7 +124,8 @@ export const useFirebaseAuth = () => {
   const getAuthToken = async (): Promise<string | null> => {
     if (!authState.user) return null;
     try {
-      return await authState.user.getIdToken();
+      // Always refresh token to ensure it's valid
+      return await authState.user.getIdToken(true);
     } catch (error) {
       console.error("Failed to get auth token:", error);
       return null;
