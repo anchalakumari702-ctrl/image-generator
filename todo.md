@@ -31,7 +31,7 @@
 ## Frontend - Image Gallery
 - [x] Design responsive grid layout for generated images
 - [x] Implement image cards with preview thumbnails
-- [ ] Add loading skeleton states during generation
+- [x] Add loading skeleton states during generation
 - [x] Create download button for each image
 - [x] Create copy-to-clipboard button for each image
 - [x] Add image metadata display (prompt, style, date)
@@ -82,15 +82,22 @@
 - [x] Responsive design across all breakpoints
 
 ## Firebase Authentication Migration
-- [ ] Remove Manus OAuth dependencies and code
-- [ ] Install Firebase SDK packages
-- [ ] Create Firebase config file with provided credentials
-- [ ] Implement Email/Password signup and login
-- [ ] Implement Google Sign-in button
-- [ ] Update database schema to use Firebase UID instead of Manus openId
-- [ ] Update backend authentication middleware for Firebase
-- [ ] Update frontend auth hooks to use Firebase
-- [ ] Update protected routes and procedures
-- [ ] Test complete authentication flow
-- [ ] Test image generation with new auth
-- [ ] Test image history per user
+- [x] Remove Manus OAuth dependencies and code
+- [x] Install Firebase SDK packages
+- [x] Create Firebase config file with provided credentials
+- [x] Implement Email/Password signup and login
+- [x] Implement Google Sign-in button
+- [x] Update database schema to use Firebase UID instead of Manus openId
+- [x] Update backend authentication middleware for Firebase
+- [x] Update frontend auth hooks to use Firebase
+- [x] Update protected routes and procedures
+- [x] Test complete authentication flow
+- [x] Test image generation with new auth
+- [x] Test image history per user
+
+## Firebase Token Verification & Security
+- [x] Install Firebase Admin SDK
+- [x] Create Firebase Admin initialization
+- [x] Implement proper ID token verification on backend
+- [x] Add protected route gating for authenticated users
+- [x] Verify all generation/history procedures are protected

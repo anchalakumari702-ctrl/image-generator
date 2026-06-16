@@ -22,11 +22,27 @@ function Router() {
     );
   }
 
+  // Redirect authenticated users away from login/signup
+  if (user) {
+    return (
+      <Switch>
+        <Route path="/" component={Home} />
+        <Route path="/404" component={NotFound} />
+        {/* Redirect login/signup to home for authenticated users */}
+        <Route path="/login" component={Home} />
+        <Route path="/signup" component={Home} />
+        {/* Final fallback route */}
+        <Route component={NotFound} />
+      </Switch>
+    );
+  }
+
+  // Show login/signup for unauthenticated users
   return (
     <Switch>
       <Route path="/login" component={Login} />
       <Route path="/signup" component={Signup} />
-      <Route path="/" component={Home} />
+      <Route path="/" component={Login} />
       <Route path="/404" component={NotFound} />
       {/* Final fallback route */}
       <Route component={NotFound} />
