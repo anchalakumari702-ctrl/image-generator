@@ -1,118 +1,94 @@
-import { useAuth } from "@/_core/hooks/useAuth";
 import { Button } from "@/components/ui/button";
-import { getLoginUrl } from "@/const";
-import { Sparkles, Zap } from "lucide-react";
+import { Loader2, LogOut } from "lucide-react";
+import { useFirebaseAuth } from "@/hooks/useFirebaseAuth";
 import { useLocation } from "wouter";
 import GeneratorInterface from "@/components/GeneratorInterface";
 import ImageGallery from "@/components/ImageGallery";
-import { useState } from "react";
+import { toast } from "sonner";
 
 export default function Home() {
-  const { user, isAuthenticated } = useAuth();
-  const [, navigate] = useLocation();
-  const [refreshGallery, setRefreshGallery] = useState(0);
+  const { user, loading, logout } = useFirebaseAuth();
+  const [, setLocation] = useLocation();
 
-  if (!isAuthenticated) {
+  const handleLogout = async () => {
+    try {
+      await logout();
+      toast.success("Logged out successfully");
+      setLocation("/login");
+    } catch (err) {
+      toast.error("Logout failed");
+    }
+  };
+
+  if (loading) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-background via-background to-accent/5 flex flex-col">
-        {/* Header */}
-        <header className="border-b border-border/50 backdrop-blur-sm sticky top-0 z-50">
-          <div className="container h-16 flex items-center justify-between">
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center">
-                <Sparkles className="w-6 h-6 text-accent" />
-              </div>
-              <h1 className="text-xl font-semibold tracking-tight">Leonardo AI</h1>
-            </div>
-            <a href={getLoginUrl()}>
-              <Button className="bg-accent hover:bg-accent/90 text-accent-foreground">
-                Sign In
-              </Button>
-            </a>
+      <div className="min-h-screen flex items-center justify-center">
+        <Loader2 className="animate-spin w-8 h-8" />
+      </div>
+    );
+  }
+
+  if (!user) {
+    return (
+      <div className="min-h-screen flex flex-col items-center justify-center px-4 py-8 bg-gradient-to-br from-background to-muted">
+        <div className="text-center max-w-md animate-fade-in">
+          <div className="w-16 h-16 rounded-lg bg-accent flex items-center justify-center mx-auto mb-6">
+            <span className="text-white font-bold text-3xl">✨</span>
           </div>
-        </header>
-
-        {/* Hero Section */}
-        <main className="flex-1 flex flex-col items-center justify-center px-4 py-20">
-          <div className="max-w-2xl text-center space-y-8 animate-fade-in">
-            <div className="space-y-4 animate-slide-in-up" style={{ animationDelay: '0.1s' }}>
-              <h2 className="text-5xl md:text-6xl font-bold tracking-tight">
-                Create stunning images with AI
-              </h2>
-              <p className="text-xl text-muted-foreground">
-                Transform your ideas into beautiful visuals. Describe what you want, and watch it come to life.
-              </p>
-            </div>
-
-            <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4 animate-slide-in-up" style={{ animationDelay: '0.2s' }}>
-              <a href={getLoginUrl()}>
-                <Button size="lg" className="bg-accent hover:bg-accent/90 text-accent-foreground px-8">
-                  <Zap className="w-5 h-5 mr-2" />
-                  Get Started
-                </Button>
-              </a>
-            </div>
-
-            <div className="grid grid-cols-3 gap-6 pt-12 text-sm animate-slide-in-up" style={{ animationDelay: '0.3s' }}>
-              <div className="space-y-2">
-                <div className="text-2xl font-bold text-accent">∞</div>
-                <p className="text-muted-foreground">Unlimited generations</p>
-              </div>
-              <div className="space-y-2">
-                <div className="text-2xl font-bold text-accent">⚡</div>
-                <p className="text-muted-foreground">Lightning fast</p>
-              </div>
-              <div className="space-y-2">
-                <div className="text-2xl font-bold text-accent">✨</div>
-                <p className="text-muted-foreground">Premium quality</p>
-              </div>
-            </div>
+          <h1 className="text-4xl font-bold mb-3">Leonardo AI</h1>
+          <p className="text-muted-foreground mb-8">
+            Create stunning images with AI. Sign in to get started.
+          </p>
+          <div className="flex gap-4 justify-center">
+            <Button
+              onClick={() => setLocation("/login")}
+              className="bg-accent hover:bg-accent/90 text-accent-foreground px-8"
+            >
+              Sign In
+            </Button>
+            <Button
+              onClick={() => setLocation("/signup")}
+              variant="outline"
+              className="px-8"
+            >
+              Sign Up
+            </Button>
           </div>
-        </main>
+        </div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-background via-background to-accent/5">
+    <div className="min-h-screen flex flex-col bg-background">
       {/* Header */}
-      <header className="border-b border-border/50 backdrop-blur-sm sticky top-0 z-50">
-        <div className="container h-16 flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center">
-              <Sparkles className="w-6 h-6 text-accent" />
+      <header className="border-b border-border/50 bg-card/50 backdrop-blur-sm sticky top-0 z-50">
+        <div className="container py-4 flex items-center justify-between">
+          <div className="flex items-center gap-2">
+            <div className="w-8 h-8 rounded-lg bg-accent flex items-center justify-center">
+              <span className="text-white font-bold">✨</span>
             </div>
-            <h1 className="text-xl font-semibold tracking-tight">Leonardo AI</h1>
+            <h1 className="text-xl font-bold">Leonardo AI</h1>
           </div>
           <div className="flex items-center gap-4">
-            <span className="text-sm text-muted-foreground">{user?.name}</span>
+            <span className="text-sm text-muted-foreground">{user.email}</span>
+            <Button
+              onClick={handleLogout}
+              variant="ghost"
+              size="sm"
+              className="text-muted-foreground hover:text-foreground"
+            >
+              <LogOut className="w-4 h-4 mr-2" />
+              Logout
+            </Button>
           </div>
         </div>
       </header>
 
       {/* Main Content */}
-      <main className="container py-8 space-y-12">
-        {/* Generator Section */}
-        <section className="space-y-6">
-          <div className="space-y-2">
-            <h2 className="text-3xl font-bold tracking-tight">Create New Image</h2>
-            <p className="text-muted-foreground">
-              Describe your vision and let AI bring it to life
-            </p>
-          </div>
-          <GeneratorInterface onSuccess={() => setRefreshGallery(prev => prev + 1)} />
-        </section>
-
-        {/* Gallery Section */}
-        <section className="space-y-6">
-          <div className="space-y-2">
-            <h2 className="text-3xl font-bold tracking-tight">Your Gallery</h2>
-            <p className="text-muted-foreground">
-              Browse and manage your generated images
-            </p>
-          </div>
-          <ImageGallery key={refreshGallery} />
-        </section>
+      <main className="flex-1 container py-8 space-y-8">
+        <GeneratorInterface />
+        <ImageGallery />
       </main>
     </div>
   );

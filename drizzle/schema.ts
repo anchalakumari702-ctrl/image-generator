@@ -11,22 +11,24 @@ export const users = mysqlTable("users", {
    * Use this for relations between tables.
    */
   id: int("id").autoincrement().primaryKey(),
-  /** Manus OAuth identifier (openId) returned from the OAuth callback. Unique per user. */
-  openId: varchar("openId", { length: 64 }).notNull().unique(),
+  /** Firebase UID - unique identifier from Firebase Authentication */
+  firebaseUid: varchar("firebaseUid", { length: 128 }).notNull().unique(),
+  email: varchar("email", { length: 320 }).notNull(),
   name: text("name"),
-  email: varchar("email", { length: 320 }),
-  loginMethod: varchar("loginMethod", { length: 64 }),
   role: mysqlEnum("role", ["user", "admin"]).default("user").notNull(),
   createdAt: timestamp("createdAt").defaultNow().notNull(),
   updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
-  lastSignedIn: timestamp("lastSignedIn").defaultNow().notNull(),
 });
 
 export type User = typeof users.$inferSelect;
 export type InsertUser = typeof users.$inferInsert;
 
+// Index for Firebase UID lookups
+export const userFirebaseUidIndex = "idx_users_firebase_uid";
+
 /**
  * Generated images table - stores all AI-generated images per user
+ * Each image is linked to a user via userId foreign key
  */
 export const generatedImages = mysqlTable("generatedImages", {
   id: int("id").autoincrement().primaryKey(),
@@ -46,6 +48,7 @@ export type InsertGeneratedImage = typeof generatedImages.$inferInsert;
 
 /**
  * Image generations table - tracks generation requests and their metadata
+ * Used for tracking the status of image generation requests
  */
 export const imageGenerations = mysqlTable("imageGenerations", {
   id: int("id").autoincrement().primaryKey(),

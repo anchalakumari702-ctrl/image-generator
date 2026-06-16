@@ -10,9 +10,9 @@
 - [x] Create `images.generate` procedure - accepts prompt, style, aspectRatio, count; calls image generation API
 - [x] Create `images.list` procedure - returns user's image history with pagination
 - [x] Create `images.delete` procedure - removes image from user's history
-- [ ] Create `images.getDownloadUrl` procedure - generates presigned S3 URL for download
+- [x] Create `images.getDownloadUrl` procedure - generates presigned S3 URL for download
 - [x] Add error handling and validation for all procedures
-- [ ] Write vitest tests for all procedures
+- [x] Write vitest tests for all procedures
 
 ## Frontend - Layout & Navigation
 - [x] Design and implement elegant header with branding and user profile
@@ -39,7 +39,7 @@
 ## Frontend - Image History
 - [x] Build history page/section to display all user's generated images
 - [x] Implement pagination or infinite scroll
-- [ ] Add filter/sort options (by date, style, etc.)
+- [x] Add filter/sort options (by date, style, etc.)
 - [x] Add delete functionality with confirmation
 - [x] Implement empty state messaging
 
@@ -80,3 +80,17 @@
 - [x] Premium typography with Sora + Inter fonts
 - [x] Smooth animations and transitions
 - [x] Responsive design across all breakpoints
+
+## Firebase Authentication Migration
+- [ ] Remove Manus OAuth dependencies and code
+- [ ] Install Firebase SDK packages
+- [ ] Create Firebase config file with provided credentials
+- [ ] Implement Email/Password signup and login
+- [ ] Implement Google Sign-in button
+- [ ] Update database schema to use Firebase UID instead of Manus openId
+- [ ] Update backend authentication middleware for Firebase
+- [ ] Update frontend auth hooks to use Firebase
+- [ ] Update protected routes and procedures
+- [ ] Test complete authentication flow
+- [ ] Test image generation with new auth
+- [ ] Test image history per user

@@ -8,6 +8,7 @@ import App from "./App";
 import { getLoginUrl } from "./const";
 import "./index.css";
 
+
 const queryClient = new QueryClient();
 
 const redirectToLoginIfUnauthorized = (error: unknown) => {
@@ -43,9 +44,17 @@ const trpcClient = trpc.createClient({
       url: "/api/trpc",
       transformer: superjson,
       fetch(input, init) {
+        // Get Firebase token from localStorage
+        const token = typeof window !== "undefined" ? localStorage.getItem("firebaseToken") : null;
+        const headers: Record<string, string> = token ? { Authorization: `Bearer ${token}` } : {};
+        
         return globalThis.fetch(input, {
           ...(init ?? {}),
           credentials: "include",
+          headers: {
+            ...headers,
+            ...(init?.headers as Record<string, string> ?? {}),
+          } as HeadersInit,
         });
       },
     }),

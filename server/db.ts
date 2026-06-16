@@ -1,7 +1,6 @@
 import { eq, desc, and } from "drizzle-orm";
 import { drizzle } from "drizzle-orm/mysql2";
 import { InsertUser, users, generatedImages, imageGenerations } from "../drizzle/schema";
-import { ENV } from './_core/env';
 
 let _db: ReturnType<typeof drizzle> | null = null;
 
@@ -18,9 +17,12 @@ export async function getDb() {
   return _db;
 }
 
-export async function upsertUser(user: InsertUser): Promise<void> {
-  if (!user.openId) {
-    throw new Error("User openId is required for upsert");
+/**
+ * Create or update a user from Firebase authentication
+ */
+export async function upsertUser(firebaseUid: string, email: string, name?: string): Promise<void> {
+  if (!firebaseUid || !email) {
+    throw new Error("Firebase UID and email are required for upsert");
   }
 
   const db = await getDb();
@@ -31,41 +33,18 @@ export async function upsertUser(user: InsertUser): Promise<void> {
 
   try {
     const values: InsertUser = {
-      openId: user.openId,
-    };
-    const updateSet: Record<string, unknown> = {};
-
-    const textFields = ["name", "email", "loginMethod"] as const;
-    type TextField = (typeof textFields)[number];
-
-    const assignNullable = (field: TextField) => {
-      const value = user[field];
-      if (value === undefined) return;
-      const normalized = value ?? null;
-      values[field] = normalized;
-      updateSet[field] = normalized;
+      firebaseUid,
+      email,
+      name: name || null,
     };
 
-    textFields.forEach(assignNullable);
+    const updateSet: Record<string, unknown> = {
+      email,
+      updatedAt: new Date(),
+    };
 
-    if (user.lastSignedIn !== undefined) {
-      values.lastSignedIn = user.lastSignedIn;
-      updateSet.lastSignedIn = user.lastSignedIn;
-    }
-    if (user.role !== undefined) {
-      values.role = user.role;
-      updateSet.role = user.role;
-    } else if (user.openId === ENV.ownerOpenId) {
-      values.role = 'admin';
-      updateSet.role = 'admin';
-    }
-
-    if (!values.lastSignedIn) {
-      values.lastSignedIn = new Date();
-    }
-
-    if (Object.keys(updateSet).length === 0) {
-      updateSet.lastSignedIn = new Date();
+    if (name) {
+      updateSet.name = name;
     }
 
     await db.insert(users).values(values).onDuplicateKeyUpdate({
@@ -77,30 +56,39 @@ export async function upsertUser(user: InsertUser): Promise<void> {
   }
 }
 
-export async function getUserByOpenId(openId: string) {
+/**
+ * Get user by Firebase UID
+ */
+export async function getUserByFirebaseUid(firebaseUid: string) {
   const db = await getDb();
   if (!db) {
     console.warn("[Database] Cannot get user: database not available");
     return undefined;
   }
 
-  const result = await db.select().from(users).where(eq(users.openId, openId)).limit(1);
+  const result = await db.select().from(users).where(eq(users.firebaseUid, firebaseUid)).limit(1);
 
   return result.length > 0 ? result[0] : undefined;
 }
 
-export async function getUserImages(userId: number, limit: number = 20, offset: number = 0) {
+/**
+ * Get user by email
+ */
+export async function getUserByEmail(email: string) {
   const db = await getDb();
-  if (!db) return [];
+  if (!db) {
+    console.warn("[Database] Cannot get user: database not available");
+    return undefined;
+  }
 
-  return db
-    .select()
-    .from(users)
-    .where(eq(users.id, userId))
-    .limit(limit)
-    .offset(offset);
+  const result = await db.select().from(users).where(eq(users.email, email)).limit(1);
+
+  return result.length > 0 ? result[0] : undefined;
 }
 
+/**
+ * Create a generated image record
+ */
 export async function createGeneratedImage(
   userId: number,
   prompt: string,
@@ -126,6 +114,9 @@ export async function createGeneratedImage(
   return result;
 }
 
+/**
+ * Get all generated images for a user
+ */
 export async function getGeneratedImagesByUserId(userId: number, limit: number = 50, offset: number = 0) {
   const db = await getDb();
   if (!db) return [];
@@ -139,6 +130,9 @@ export async function getGeneratedImagesByUserId(userId: number, limit: number =
     .offset(offset);
 }
 
+/**
+ * Delete a generated image (with ownership check)
+ */
 export async function deleteGeneratedImage(imageId: number, userId: number) {
   const db = await getDb();
   if (!db) throw new Error("Database not available");
@@ -148,6 +142,9 @@ export async function deleteGeneratedImage(imageId: number, userId: number) {
     .where(and(eq(generatedImages.id, imageId), eq(generatedImages.userId, userId)));
 }
 
+/**
+ * Create an image generation request
+ */
 export async function createImageGeneration(
   userId: number,
   prompt: string,
@@ -170,6 +167,9 @@ export async function createImageGeneration(
   return result;
 }
 
+/**
+ * Update image generation status
+ */
 export async function updateImageGenerationStatus(
   generationId: number,
   status: "pending" | "completed" | "failed",
@@ -180,6 +180,6 @@ export async function updateImageGenerationStatus(
 
   return db
     .update(imageGenerations)
-    .set({ status, errorMessage })
+    .set({ status, errorMessage, updatedAt: new Date() })
     .where(eq(imageGenerations.id, generationId));
 }

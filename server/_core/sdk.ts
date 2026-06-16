@@ -277,20 +277,19 @@ class SDKServer {
 
     const sessionUserId = session.openId;
     const signedInAt = new Date();
-    let user = await db.getUserByOpenId(sessionUserId);
+    let user = await db.getUserByFirebaseUid(`manus_${sessionUserId}`);
 
     // If user not in DB, sync from OAuth server automatically
     if (!user) {
       try {
         const userInfo = await this.getUserInfoWithJwt(sessionCookie ?? "");
-        await db.upsertUser({
-          openId: userInfo.openId,
-          name: userInfo.name || null,
-          email: userInfo.email ?? null,
-          loginMethod: userInfo.loginMethod ?? userInfo.platform ?? null,
-          lastSignedIn: signedInAt,
-        });
-        user = await db.getUserByOpenId(userInfo.openId);
+        // For Manus OAuth users, use openId as firebaseUid (temporary mapping)
+        await db.upsertUser(
+          `manus_${userInfo.openId}`,
+          userInfo.email ?? `user_${userInfo.openId}@manus.local`,
+          userInfo.name || undefined
+        );
+        user = await db.getUserByFirebaseUid(`manus_${userInfo.openId}`);
       } catch (error) {
         console.error("[Auth] Failed to sync user from OAuth:", error);
         throw ForbiddenError("Failed to sync user info");
@@ -300,11 +299,6 @@ class SDKServer {
     if (!user) {
       throw ForbiddenError("User not found");
     }
-
-    await db.upsertUser({
-      openId: user.openId,
-      lastSignedIn: signedInAt,
-    });
 
     return user;
   }
@@ -324,17 +318,15 @@ function buildCronUser(
   const now = new Date();
   return {
     id: -1,
-    openId: userInfo.openId,
+    firebaseUid: `cron_${userInfo.openId}`,
     name: userInfo.name || "Manus Scheduled Task",
-    email: null,
-    loginMethod: null,
+    email: `cron_${userInfo.openId}@manus.local`,
     role: "user",
     createdAt: now,
     updatedAt: now,
-    lastSignedIn: now,
     taskUid: userInfo.taskUid ?? undefined,
     isCron: true,
-  } as AuthenticatedUser;
+  } as any;
 }
 
 export const sdk = new SDKServer();

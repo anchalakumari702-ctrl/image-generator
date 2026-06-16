@@ -28,15 +28,14 @@ export function registerOAuthRoutes(app: Express) {
         return;
       }
 
-      await db.upsertUser({
-        openId: userInfo.openId,
-        name: userInfo.name || null,
-        email: userInfo.email ?? null,
-        loginMethod: userInfo.loginMethod ?? userInfo.platform ?? null,
-        lastSignedIn: new Date(),
-      });
+      // For Manus OAuth users, use openId as firebaseUid
+      await db.upsertUser(
+        `manus_${userInfo.openId}`,
+        userInfo.email ?? `user_${userInfo.openId}@manus.local`,
+        userInfo.name || undefined
+      );
 
-      const sessionToken = await sdk.createSessionToken(userInfo.openId, {
+      const sessionToken = await sdk.createSessionToken(`manus_${userInfo.openId}`, {
         name: userInfo.name || "",
         expiresInMs: ONE_YEAR_MS,
       });
