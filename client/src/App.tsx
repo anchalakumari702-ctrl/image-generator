@@ -7,6 +7,13 @@ import { ThemeProvider } from "./contexts/ThemeContext";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
+import TermsAndConditions from "./pages/TermsAndConditions";
+import Disclaimer from "./pages/Disclaimer";
+import CookiePolicy from "./pages/CookiePolicy";
+import RefundPolicy from "./pages/RefundPolicy";
+import ContactUs from "./pages/ContactUs";
+import AboutUs from "./pages/AboutUs";
 import { useFirebaseAuth } from "./hooks/useFirebaseAuth";
 import { Spinner } from "./components/ui/spinner";
 import "@/lib/firebase";
@@ -27,6 +34,13 @@ function Router() {
     return (
       <Switch>
         <Route path="/" component={Home} />
+        <Route path="/privacy" component={PrivacyPolicy} />
+        <Route path="/terms" component={TermsAndConditions} />
+        <Route path="/disclaimer" component={Disclaimer} />
+        <Route path="/cookies" component={CookiePolicy} />
+        <Route path="/refund" component={RefundPolicy} />
+        <Route path="/contact" component={ContactUs} />
+        <Route path="/about" component={AboutUs} />
         <Route path="/404" component={NotFound} />
         {/* Redirect login/signup to home for authenticated users */}
         <Route path="/login" component={Home} />
@@ -42,6 +56,13 @@ function Router() {
     <Switch>
       <Route path="/login" component={Login} />
       <Route path="/signup" component={Signup} />
+      <Route path="/privacy" component={PrivacyPolicy} />
+      <Route path="/terms" component={TermsAndConditions} />
+      <Route path="/disclaimer" component={Disclaimer} />
+      <Route path="/cookies" component={CookiePolicy} />
+      <Route path="/refund" component={RefundPolicy} />
+      <Route path="/contact" component={ContactUs} />
+      <Route path="/about" component={AboutUs} />
       <Route path="/" component={Login} />
       <Route path="/404" component={NotFound} />
       {/* Final fallback route */}
@@ -49,11 +70,6 @@ function Router() {
     </Switch>
   );
 }
-
-// NOTE: About Theme
-// - First choose a default theme according to your design style (dark or light bg), than change color palette in index.css
-//   to keep consistent foreground/background color across components
-// - If you want to make theme switchable, pass `switchable` ThemeProvider and use `useTheme` hook
 
 function App() {
   return (

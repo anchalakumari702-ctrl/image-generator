@@ -7,6 +7,7 @@ import { Spinner } from "@/components/ui/spinner";
 import { toast } from "sonner";
 import { useLocation } from "wouter";
 import { Mail, Lock, Loader2 } from "lucide-react";
+import Footer from "@/components/Footer";
 
 export default function Login() {
   const [, setLocation] = useLocation();
@@ -48,7 +49,8 @@ export default function Login() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center px-4 py-8 bg-gradient-to-br from-background to-muted">
+    <div className="min-h-screen flex flex-col bg-gradient-to-br from-background to-muted">
+      <div className="flex-1 flex items-center justify-center px-4 py-8">
       <div className="w-full max-w-md animate-fade-in">
         {/* Header */}
         <div className="text-center mb-8">
@@ -186,6 +188,8 @@ export default function Login() {
           </p>
         </Card>
       </div>
+      </div>
+      <Footer />
     </div>
   );
 }

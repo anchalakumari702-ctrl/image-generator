@@ -4,6 +4,7 @@ import { useFirebaseAuth } from "@/hooks/useFirebaseAuth";
 import { useLocation } from "wouter";
 import GeneratorInterface from "@/components/GeneratorInterface";
 import ImageGallery from "@/components/ImageGallery";
+import Footer from "@/components/Footer";
 import { toast } from "sonner";
 
 export default function Home() {
@@ -30,7 +31,8 @@ export default function Home() {
 
   if (!user) {
     return (
-      <div className="min-h-screen flex flex-col items-center justify-center px-4 py-8 bg-gradient-to-br from-background to-muted">
+      <div className="min-h-screen flex flex-col bg-gradient-to-br from-background to-muted">
+        <div className="flex-1 flex items-center justify-center px-4 py-8">
         <div className="text-center max-w-md animate-fade-in">
           <div className="w-16 h-16 rounded-lg bg-accent flex items-center justify-center mx-auto mb-6">
             <span className="text-white font-bold text-3xl">✨</span>
@@ -56,6 +58,8 @@ export default function Home() {
           </div>
         </div>
       </div>
+      <Footer />
+    </div>
     );
   }
 
@@ -90,6 +94,9 @@ export default function Home() {
         <GeneratorInterface />
         <ImageGallery />
       </main>
+
+      {/* Footer */}
+      <Footer />
     </div>
   );
 }
