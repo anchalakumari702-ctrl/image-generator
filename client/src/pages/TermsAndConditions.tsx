@@ -91,28 +91,99 @@ export default function TermsAndConditions() {
           </section>
 
           <section className="mb-8">
-            <h2 className="text-2xl font-bold mb-4">8. Governing Law</h2>
+            <h2 className="text-2xl font-bold mb-4">8. AI-Generated Content Ownership</h2>
             <p className="text-muted-foreground mb-4">
-              These terms and conditions are governed by and construed in accordance with the laws of India, and you irrevocably submit to the exclusive jurisdiction of the courts in that location.
+              Users retain ownership of the images they generate using Dragon AI Image, subject to applicable laws and third-party intellectual property rights. Dragon AI Image does not claim ownership of AI-generated images created by users.
+            </p>
+            <p className="text-muted-foreground mb-4">
+              Users are solely responsible for ensuring that their generated content does not violate any applicable laws, intellectual property rights, privacy rights, or other rights of third parties.
             </p>
           </section>
 
           <section className="mb-8">
-            <h2 className="text-2xl font-bold mb-4">9. User Accounts</h2>
+            <h2 className="text-2xl font-bold mb-4">9. Acceptable Use Policy</h2>
+            <p className="text-muted-foreground mb-4">
+              Users agree not to generate, upload, share, or distribute content that:
+            </p>
+            <ul className="list-disc list-inside text-muted-foreground space-y-2 mb-4">
+              <li>Violates any applicable law or regulation</li>
+              <li>Infringes copyright, trademark, or intellectual property rights</li>
+              <li>Promotes violence, hatred, harassment, or discrimination</li>
+              <li>Contains sexually explicit or exploitative material</li>
+              <li>Impersonates another individual or organization</li>
+              <li>Creates deceptive, fraudulent, or misleading content</li>
+              <li>Violates the privacy or rights of others</li>
+            </ul>
+            <p className="text-muted-foreground mb-4">
+              Dragon AI Image reserves the right to remove content and restrict access to users who violate these rules.
+            </p>
+          </section>
+
+          <section className="mb-8">
+            <h2 className="text-2xl font-bold mb-4">10. Age Requirement</h2>
+            <p className="text-muted-foreground mb-4">
+              Users must be at least 13 years old to use Dragon AI Image. Users under the age of 18 should use the Service only with the involvement and supervision of a parent or legal guardian.
+            </p>
+          </section>
+
+          <section className="mb-8">
+            <h2 className="text-2xl font-bold mb-4">11. Account Suspension and Termination</h2>
+            <p className="text-muted-foreground mb-4">
+              Dragon AI Image reserves the right to suspend, restrict, or terminate any account that violates these Terms, engages in unlawful activities, abuses the Service, or attempts to compromise the security of the platform. Such action may be taken without prior notice.
+            </p>
+          </section>
+
+          <section className="mb-8">
+            <h2 className="text-2xl font-bold mb-4">12. Service Availability</h2>
+            <p className="text-muted-foreground mb-4">
+              Dragon AI Image strives to provide reliable service but does not guarantee uninterrupted, error-free, or secure operation at all times. The Service may be temporarily unavailable due to maintenance, upgrades, technical issues, or circumstances beyond our control.
+            </p>
+          </section>
+
+          <section className="mb-8">
+            <h2 className="text-2xl font-bold mb-4">13. Copyright Complaints</h2>
+            <p className="text-muted-foreground mb-4">
+              If you believe that any content available through Dragon AI Image infringes your copyright or intellectual property rights, please contact us at aicocode25@gmail.com. We will review valid complaints and take appropriate action where necessary.
+            </p>
+          </section>
+
+          <section className="mb-8">
+            <h2 className="text-2xl font-bold mb-4">14. Payments, Credits, and Refunds</h2>
+            <p className="text-muted-foreground mb-4">
+              If Dragon AI Image offers paid subscriptions, credits, or premium features in the future, pricing, billing, cancellation, and refund policies will be published separately on the website. Unless otherwise stated, all purchases are final and subject to applicable consumer protection laws.
+            </p>
+          </section>
+
+          <section className="mb-8">
+            <h2 className="text-2xl font-bold mb-4">15. Limitation of AI Outputs</h2>
+            <p className="text-muted-foreground mb-4">
+              AI-generated content is created automatically by artificial intelligence systems. Dragon AI Image does not guarantee the accuracy, legality, originality, suitability, or reliability of any generated output. Users are responsible for reviewing and verifying generated content before use.
+            </p>
+          </section>
+
+          <section className="mb-8">
+            <h2 className="text-2xl font-bold mb-4">16. Governing Law and Jurisdiction</h2>
+            <p className="text-muted-foreground mb-4">
+              These Terms shall be governed by and interpreted in accordance with the laws of India. Any disputes arising out of or relating to these Terms shall be subject to the exclusive jurisdiction of the courts located in Delhi, India.
+            </p>
+          </section>
+
+          <section className="mb-8">
+            <h2 className="text-2xl font-bold mb-4">17. User Accounts</h2>
             <p className="text-muted-foreground mb-4">
               If you create an account on Dragon AI Image, you are responsible for maintaining the confidentiality of your account information and password. You agree to accept responsibility for all activities that occur under your account. You must notify us immediately of any unauthorized use of your account.
             </p>
           </section>
 
           <section className="mb-8">
-            <h2 className="text-2xl font-bold mb-4">10. User Content</h2>
+            <h2 className="text-2xl font-bold mb-4">18. User Content</h2>
             <p className="text-muted-foreground mb-4">
               You retain all rights to any content you submit, post, or display on or through Dragon AI Image. By submitting content, you grant Dragon AI Image a worldwide, non-exclusive, royalty-free license to use, copy, reproduce, process, adapt, modify, publish, transmit, display, and distribute such content in any media or medium.
             </p>
           </section>
 
           <section className="mb-8">
-            <h2 className="text-2xl font-bold mb-4">11. Prohibited Activities</h2>
+            <h2 className="text-2xl font-bold mb-4">19. Prohibited Activities</h2>
             <p className="text-muted-foreground mb-4">
               You agree not to engage in any of the following prohibited activities:
             </p>
@@ -127,7 +198,7 @@ export default function TermsAndConditions() {
           </section>
 
           <section className="mb-8">
-            <h2 className="text-2xl font-bold mb-4">12. Contact Us</h2>
+            <h2 className="text-2xl font-bold mb-4">20. Contact Us</h2>
             <p className="text-muted-foreground mb-4">
               If you have any questions about these Terms & Conditions, please contact us at:
             </p>
