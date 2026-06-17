@@ -67,7 +67,7 @@ export default function Signup() {
             <div className="w-10 h-10 rounded-lg bg-accent flex items-center justify-center">
               <span className="text-white font-bold text-lg">✨</span>
             </div>
-            <h1 className="text-2xl font-bold">Leonardo AI</h1>
+            <h1 className="text-2xl font-bold">Dragon AI Image</h1>
           </div>
           <p className="text-muted-foreground">Create an account to get started</p>
         </div>

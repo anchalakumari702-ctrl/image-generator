@@ -35,7 +35,7 @@ export default function Home() {
           <div className="w-16 h-16 rounded-lg bg-accent flex items-center justify-center mx-auto mb-6">
             <span className="text-white font-bold text-3xl">✨</span>
           </div>
-          <h1 className="text-4xl font-bold mb-3">Leonardo AI</h1>
+          <h1 className="text-4xl font-bold mb-3">Dragon AI Image</h1>
           <p className="text-muted-foreground mb-8">
             Create stunning images with AI. Sign in to get started.
           </p>
@@ -68,7 +68,7 @@ export default function Home() {
             <div className="w-8 h-8 rounded-lg bg-accent flex items-center justify-center">
               <span className="text-white font-bold">✨</span>
             </div>
-            <h1 className="text-xl font-bold">Leonardo AI</h1>
+            <h1 className="text-xl font-bold">Dragon AI Image</h1>
           </div>
           <div className="flex items-center gap-4">
             <span className="text-sm text-muted-foreground">{user.email}</span>
