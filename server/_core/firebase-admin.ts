@@ -1,4 +1,5 @@
 import admin from "firebase-admin";
+import { getAuth } from "firebase-admin/auth";
 
 let adminApp: any = null;
 
@@ -13,7 +14,7 @@ export function initializeFirebaseAdmin() {
   try {
     // Initialize with default credentials (works in Cloud Run, App Engine, etc.)
     // For local development, set GOOGLE_APPLICATION_CREDENTIALS env var
-    adminApp = (admin as any).initializeApp({
+    adminApp = admin.initializeApp({
       projectId: "satyamo-c2c21",
     });
 
@@ -43,7 +44,8 @@ export async function verifyFirebaseToken(idToken: string) {
       throw new Error("Firebase Admin not initialized");
     }
 
-    const auth = (admin as any).auth(adminApp);
+    // Use getAuth from firebase-admin/auth
+    const auth = getAuth(adminApp);
     const decodedToken = await auth.verifyIdToken(idToken);
     return decodedToken;
   } catch (error) {
@@ -64,7 +66,7 @@ export function getFirebaseAuth() {
     throw new Error("Firebase Admin not initialized");
   }
 
-  return (admin as any).auth(adminApp);
+  return getAuth(adminApp);
 }
 
 /**
