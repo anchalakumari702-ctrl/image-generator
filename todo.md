@@ -101,3 +101,46 @@
 - [x] Implement proper ID token verification on backend
 - [x] Add protected route gating for authenticated users
 - [x] Verify all generation/history procedures are protected
+
+
+## Self-Hosted Docker Setup
+- [ ] Create Dockerfile for Node.js application
+- [ ] Create docker-compose.yml with MySQL and app services
+- [ ] Configure environment variables for Docker
+- [ ] Set up Docker networking and volumes
+- [ ] Test Docker build and container startup
+
+## Nginx Reverse Proxy
+- [ ] Create Nginx configuration file
+- [ ] Configure SSL/TLS with Let's Encrypt
+- [ ] Set up automatic certificate renewal
+- [ ] Configure gzip compression
+- [ ] Set up security headers
+
+## Backup System
+- [ ] Create database backup script
+- [ ] Create application backup script
+- [ ] Set up automated daily backups
+- [ ] Configure backup retention policy
+- [ ] Test backup restoration
+
+## Email Alerts & Monitoring
+- [ ] Configure email notifications for server issues
+- [ ] Set up uptime monitoring script
+- [ ] Create health check endpoint
+- [ ] Configure restart on failure
+- [ ] Test email alert system
+
+## Installation & Deployment
+- [ ] Create installation guide (README)
+- [ ] Create one-click setup script (setup.sh)
+- [ ] Create environment configuration template
+- [ ] Create deployment checklist
+- [ ] Test complete installation process
+
+## Security & Hardening
+- [ ] Configure firewall rules
+- [ ] Set up fail2ban for brute force protection
+- [ ] Configure SSH security
+- [ ] Set up log rotation
+- [ ] Create security best practices guide
