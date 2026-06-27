@@ -7,7 +7,7 @@ import { createExpressMiddleware } from "@trpc/server/adapters/express";
 import { registerStorageProxy } from "./storageProxy";
 import { appRouter } from "../routers";
 import { createContext } from "./context";
-import { serveStatic, setupVite } from "./vite";
+import { serveStatic } from "./vite";
 import { initializeFirebaseAdmin } from "./firebase-admin";
 
 function isPortAvailable(port: number): Promise<boolean> {
@@ -37,6 +37,16 @@ async function startServer() {
     console.warn("[Server] Firebase Admin initialization warning (may be expected in dev):", error);
   }
 
+  // Dynamically import setupVite only in development
+  let setupVite: any = null;
+  if (process.env.NODE_ENV === "development") {
+    try {
+      setupVite = (await import("./vite")).setupVite;
+    } catch (error) {
+      console.warn("[Server] Failed to load Vite (expected in production):", error);
+    }
+  }
+
   const app = express();
   const server = createServer(app);
   // Configure body parser with larger size limit for file uploads
@@ -53,7 +63,7 @@ async function startServer() {
     })
   );
   // development mode uses Vite, production mode uses static files
-  if (process.env.NODE_ENV === "development") {
+  if (process.env.NODE_ENV === "development" && setupVite) {
     await setupVite(app, server);
   } else {
     serveStatic(app);
