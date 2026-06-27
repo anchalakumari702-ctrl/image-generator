@@ -5,6 +5,7 @@ import { useLocation } from "wouter";
 import GeneratorInterface from "@/components/GeneratorInterface";
 import ImageGallery from "@/components/ImageGallery";
 import Footer from "@/components/Footer";
+import { AdSenseAd } from "@/components/AdSenseAd";
 import { toast } from "sonner";
 
 export default function Home() {
@@ -91,8 +92,11 @@ export default function Home() {
 
       {/* Main Content */}
       <main className="flex-1 container py-8 space-y-8">
+        <AdSenseAd slot="1234567890" format="horizontal" />
         <GeneratorInterface />
+        <AdSenseAd slot="0987654321" format="horizontal" />
         <ImageGallery />
+        <AdSenseAd slot="1111111111" format="horizontal" />
       </main>
 
       {/* Footer */}

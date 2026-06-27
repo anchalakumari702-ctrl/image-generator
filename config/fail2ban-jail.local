@@ -1,0 +1,96 @@
+# Dragon AI Image - Fail2Ban Configuration
+# Protects against brute force attacks on SSH and web services
+
+[DEFAULT]
+# Email notifications
+destemail = admin@example.com
+sendername = Dragon AI Image Fail2Ban
+action = %(action_mwl)s
+
+# Ban time in seconds (1 hour)
+bantime = 3600
+
+# Find time in seconds (10 minutes)
+findtime = 600
+
+# Number of failures before banning
+maxretry = 5
+
+# ============================================
+# SSH Protection
+# ============================================
+[sshd]
+enabled = true
+port = ssh
+filter = sshd
+logpath = /var/log/auth.log
+maxretry = 5
+bantime = 3600
+findtime = 600
+
+# ============================================
+# Nginx Protection
+# ============================================
+[nginx-http-auth]
+enabled = true
+port = http,https
+filter = nginx-http-auth
+logpath = /var/log/nginx/error.log
+maxretry = 5
+bantime = 3600
+
+[nginx-noscript]
+enabled = true
+port = http,https
+filter = nginx-noscript
+logpath = /var/log/nginx/access.log
+maxretry = 6
+bantime = 600
+
+[nginx-badbots]
+enabled = true
+port = http,https
+filter = nginx-badbots
+logpath = /var/log/nginx/access.log
+maxretry = 2
+bantime = 86400
+
+[nginx-noproxy]
+enabled = true
+port = http,https
+filter = nginx-noproxy
+logpath = /var/log/nginx/access.log
+maxretry = 2
+bantime = 86400
+
+[nginx-limit-req]
+enabled = true
+port = http,https
+filter = nginx-limit-req
+logpath = /var/log/nginx/error.log
+maxretry = 5
+bantime = 600
+
+# ============================================
+# Custom Application Protection
+# ============================================
+[dragon-ai-auth-fail]
+enabled = true
+port = http,https
+filter = dragon-ai-auth-fail
+logpath = /home/*/dragon-ai-image/logs/*.log
+maxretry = 10
+bantime = 1800
+findtime = 300
+
+# ============================================
+# Recidive - Ban repeat offenders longer
+# ============================================
+[recidive]
+enabled = true
+filter = recidive
+logpath = /var/log/fail2ban.log
+action = %(action_mwl)s
+bantime = 604800
+findtime = 86400
+maxretry = 5

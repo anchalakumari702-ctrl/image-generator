@@ -4,13 +4,13 @@ import { getFirestore, connectFirestoreEmulator } from "firebase/firestore";
 
 // Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyA6Yz2ddFSyHv23AB8k84bJvn4X_TkH8_Q",
-  authDomain: "satyamo-c2c21.firebaseapp.com",
-  projectId: "satyamo-c2c21",
-  storageBucket: "satyamo-c2c21.firebasestorage.app",
-  messagingSenderId: "160553592760",
-  appId: "1:160553592760:web:408cbf70104c96d4e6514d",
-  measurementId: "G-QX2DNH6Z93"
+  apiKey: "AIzaSyD8jxHAvTxZl4X-UeDbGKAQmAcrrRg9SvI",
+  authDomain: "prince-f7668.firebaseapp.com",
+  projectId: "prince-f7668",
+  storageBucket: "prince-f7668.firebasestorage.app",
+  messagingSenderId: "1058690670358",
+  appId: "1:1058690670358:web:297d9e54740a767e9e7a37",
+  measurementId: "G-5H29ZW59WH"
 };
 
 // Initialize Firebase
