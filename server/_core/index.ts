@@ -7,7 +7,7 @@ import { createExpressMiddleware } from "@trpc/server/adapters/express";
 import { registerStorageProxy } from "./storageProxy";
 import { appRouter } from "../routers";
 import { createContext } from "./context";
-import { serveStatic } from "./vite";
+import { serveStaticProduction } from "./static-server";
 import { initializeFirebaseAdmin } from "./firebase-admin";
 
 function isPortAvailable(port: number): Promise<boolean> {
@@ -66,7 +66,7 @@ async function startServer() {
   if (process.env.NODE_ENV === "development" && setupVite) {
     await setupVite(app, server);
   } else {
-    serveStatic(app);
+    serveStaticProduction(app);
   }
 
   const preferredPort = parseInt(process.env.PORT || "3000");
