@@ -146,21 +146,15 @@
 - [x] Create security best practices guide
 
 
-## Firebase Hosting Migration
-- [ ] Install Firebase CLI tools globally
-- [ ] Initialize Firebase project with hosting, functions, and firestore
-- [ ] Create firebase.json configuration
-- [ ] Create .firebaserc with project ID
-- [ ] Migrate backend from Express to Firebase Functions
-- [ ] Migrate MySQL database to Firestore
-- [ ] Update frontend to use Firestore instead of tRPC
-- [ ] Configure Firebase authentication in backend
-- [ ] Set up environment variables for Firebase
-- [ ] Build and test locally
-- [ ] Deploy to Firebase Hosting
-- [ ] Verify all features working on Firebase
+## Production Deployment - Manus Hosting
+- [x] Fix production bundling issue (vite devDependencies)
+- [ ] Test production deployment on Manus hosting
+- [ ] Verify AdSense integration on live site
 - [ ] Set up custom domain (optional)
 - [ ] Configure SEO and meta tags
 - [ ] Create sitemap.xml for Google indexing
 - [ ] Create robots.txt for search engines
 - [ ] Test Google Search Console integration
+- [ ] Verify AdSense eligibility requirements met
+- [ ] Submit site for AdSense verification
+- [ ] Monitor AdSense approval status
