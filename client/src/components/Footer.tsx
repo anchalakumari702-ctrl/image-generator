@@ -28,7 +28,7 @@ export default function Footer() {
               <div className="w-8 h-8 rounded-lg bg-accent flex items-center justify-center">
                 <span className="text-white font-bold">✨</span>
               </div>
-              <h3 className="text-lg font-bold">Dragon AI Image</h3>
+              <h3 className="text-lg font-bold">Dragflow ai</h3>
             </div>
             <p className="text-muted-foreground text-sm">
               Create stunning images with AI-powered technology.
@@ -92,7 +92,7 @@ export default function Footer() {
         {/* Bottom Section */}
         <div className="flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-muted-foreground text-sm">
-            © 2026 Dragon AI Image. All rights reserved.
+            © 2026 Dragflow ai. All rights reserved.
           </p>
           <div className="flex items-center gap-1 text-muted-foreground text-sm">
             Made with

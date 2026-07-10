@@ -14,7 +14,7 @@ export default function AboutUs() {
             <div className="w-8 h-8 rounded-lg bg-accent flex items-center justify-center">
               <span className="text-white font-bold">✨</span>
             </div>
-            <h1 className="text-xl font-bold">Dragon AI Image</h1>
+            <h1 className="text-xl font-bold">Dragflow ai</h1>
           </div>
           <Button
             onClick={() => setLocation("/")}
@@ -29,7 +29,7 @@ export default function AboutUs() {
       {/* Main Content */}
       <main className="container py-12 max-w-4xl">
         <div className="mb-12">
-          <h1 className="text-4xl font-bold mb-4">About Dragon AI Image</h1>
+          <h1 className="text-4xl font-bold mb-4">About Dragflow ai</h1>
           <p className="text-muted-foreground text-lg">
             Empowering creativity through artificial intelligence
           </p>
@@ -39,7 +39,7 @@ export default function AboutUs() {
         <section className="mb-12">
           <h2 className="text-2xl font-bold mb-4">Our Mission</h2>
           <p className="text-muted-foreground mb-4">
-            Dragon AI Image is dedicated to democratizing AI-powered image generation. Our mission is to make advanced image creation technology accessible to everyone, regardless of their technical expertise or artistic background. We believe that creativity should know no bounds, and AI should be a tool that empowers rather than limits human potential.
+            Dragflow ai is dedicated to democratizing AI-powered image generation. Our mission is to make advanced image creation technology accessible to everyone, regardless of their technical expertise or artistic background. We believe that creativity should know no bounds, and AI should be a tool that empowers rather than limits human potential.
           </p>
         </section>
 
@@ -108,7 +108,7 @@ export default function AboutUs() {
         <section className="mb-12">
           <h2 className="text-2xl font-bold mb-4">Technology</h2>
           <p className="text-muted-foreground mb-4">
-            Dragon AI Image is built on modern, scalable technology:
+            Dragflow ai is built on modern, scalable technology:
           </p>
           <ul className="space-y-2 text-muted-foreground">
             <li>• <strong>Frontend:</strong> React 19 with TypeScript and Tailwind CSS for a beautiful, responsive interface</li>
@@ -155,7 +155,7 @@ export default function AboutUs() {
         <section className="bg-card p-8 rounded-lg border border-border text-center">
           <h2 className="text-2xl font-bold mb-4">Get in Touch</h2>
           <p className="text-muted-foreground mb-6">
-            Have questions or want to learn more about Dragon AI Image? We'd love to hear from you!
+            Have questions or want to learn more about Dragflow ai? We'd love to hear from you!
           </p>
           <Button
             onClick={() => setLocation("/contact")}

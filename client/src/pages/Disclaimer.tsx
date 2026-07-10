@@ -13,7 +13,7 @@ export default function Disclaimer() {
             <div className="w-8 h-8 rounded-lg bg-accent flex items-center justify-center">
               <span className="text-white font-bold">✨</span>
             </div>
-            <h1 className="text-xl font-bold">Dragon AI Image</h1>
+            <h1 className="text-xl font-bold">Dragflow ai</h1>
           </div>
           <Button
             onClick={() => setLocation("/")}
@@ -36,52 +36,52 @@ export default function Disclaimer() {
           <section className="mb-8">
             <h2 className="text-2xl font-bold mb-4">1. General Disclaimer</h2>
             <p className="text-muted-foreground mb-4">
-              The information provided on Dragon AI Image is for general informational purposes only. While we strive to keep the information up to date and correct, we make no representations or warranties of any kind, express or implied, about the completeness, accuracy, reliability, suitability, or availability with respect to the website or the information, products, services, or related graphics contained on the website.
+              The information provided on Dragflow ai is for general informational purposes only. While we strive to keep the information up to date and correct, we make no representations or warranties of any kind, express or implied, about the completeness, accuracy, reliability, suitability, or availability with respect to the website or the information, products, services, or related graphics contained on the website.
             </p>
           </section>
 
           <section className="mb-8">
             <h2 className="text-2xl font-bold mb-4">2. AI-Generated Content Disclaimer</h2>
             <p className="text-muted-foreground mb-4">
-              Dragon AI Image generates images using artificial intelligence technology. These images are created based on text prompts provided by users. We do not guarantee the accuracy, quality, or appropriateness of AI-generated images. Users are responsible for reviewing and approving generated images before use.
+              Dragflow ai generates images using artificial intelligence technology. These images are created based on text prompts provided by users. We do not guarantee the accuracy, quality, or appropriateness of AI-generated images. Users are responsible for reviewing and approving generated images before use.
             </p>
             <p className="text-muted-foreground mb-4">
-              AI-generated images may contain errors, inaccuracies, or inappropriate content. Dragon AI Image is not responsible for any consequences arising from the use of AI-generated images.
+              AI-generated images may contain errors, inaccuracies, or inappropriate content. Dragflow ai is not responsible for any consequences arising from the use of AI-generated images.
             </p>
           </section>
 
           <section className="mb-8">
             <h2 className="text-2xl font-bold mb-4">3. No Professional Advice</h2>
             <p className="text-muted-foreground mb-4">
-              The content on Dragon AI Image is not intended to constitute professional advice. Any reliance you place on such information is therefore strictly at your own risk.
+              The content on Dragflow ai is not intended to constitute professional advice. Any reliance you place on such information is therefore strictly at your own risk.
             </p>
           </section>
 
           <section className="mb-8">
             <h2 className="text-2xl font-bold mb-4">4. Limitation of Liability</h2>
             <p className="text-muted-foreground mb-4">
-              In no event shall Dragon AI Image, its directors, employees, or agents be liable to you for any damages arising out of the use or inability to use the materials on the website, even if Dragon AI Image or an authorized representative has been notified orally or in writing of the possibility of such damage.
+              In no event shall Dragflow ai, its directors, employees, or agents be liable to you for any damages arising out of the use or inability to use the materials on the website, even if Dragflow ai or an authorized representative has been notified orally or in writing of the possibility of such damage.
             </p>
           </section>
 
           <section className="mb-8">
             <h2 className="text-2xl font-bold mb-4">5. Intellectual Property Rights</h2>
             <p className="text-muted-foreground mb-4">
-              The AI-generated images created through Dragon AI Image may be subject to copyright and intellectual property laws. Users are responsible for ensuring they have the right to use generated images in their intended manner. Dragon AI Image does not guarantee that generated images do not infringe upon third-party intellectual property rights.
+              The AI-generated images created through Dragflow ai may be subject to copyright and intellectual property laws. Users are responsible for ensuring they have the right to use generated images in their intended manner. Dragflow ai does not guarantee that generated images do not infringe upon third-party intellectual property rights.
             </p>
           </section>
 
           <section className="mb-8">
             <h2 className="text-2xl font-bold mb-4">6. Third-Party Content</h2>
             <p className="text-muted-foreground mb-4">
-              Dragon AI Image may contain links to third-party websites and services. We are not responsible for the content, accuracy, or practices of these external sites. Your use of third-party websites is governed by their terms and conditions.
+              Dragflow ai may contain links to third-party websites and services. We are not responsible for the content, accuracy, or practices of these external sites. Your use of third-party websites is governed by their terms and conditions.
             </p>
           </section>
 
           <section className="mb-8">
             <h2 className="text-2xl font-bold mb-4">7. Service Availability</h2>
             <p className="text-muted-foreground mb-4">
-              Dragon AI Image is provided on an "as is" and "as available" basis. We do not guarantee that the service will be uninterrupted, timely, secure, or error-free. We reserve the right to modify, suspend, or discontinue the service at any time without notice.
+              Dragflow ai is provided on an "as is" and "as available" basis. We do not guarantee that the service will be uninterrupted, timely, secure, or error-free. We reserve the right to modify, suspend, or discontinue the service at any time without notice.
             </p>
           </section>
 
@@ -101,7 +101,7 @@ export default function Disclaimer() {
           <section className="mb-8">
             <h2 className="text-2xl font-bold mb-4">9. No Warranty</h2>
             <p className="text-muted-foreground mb-4">
-              Dragon AI Image makes no warranty that:
+              Dragflow ai makes no warranty that:
             </p>
             <ul className="list-disc list-inside text-muted-foreground space-y-2 mb-4">
               <li>The service will meet your requirements</li>
@@ -119,7 +119,7 @@ export default function Disclaimer() {
             <div className="bg-card p-4 rounded-lg border border-border">
               <p className="text-muted-foreground">
                 <strong>Email:</strong> aicocode25@gmail.com<br />
-                <strong>Website:</strong> Dragon AI Image
+                <strong>Website:</strong> Dragflow ai
               </p>
             </div>
           </section>

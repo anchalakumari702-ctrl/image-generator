@@ -59,7 +59,7 @@ export default function ContactUs() {
             <div className="w-8 h-8 rounded-lg bg-accent flex items-center justify-center">
               <span className="text-white font-bold">✨</span>
             </div>
-            <h1 className="text-xl font-bold">Dragon AI Image</h1>
+            <h1 className="text-xl font-bold">Dragflow ai</h1>
           </div>
           <Button
             onClick={() => setLocation("/")}
@@ -101,7 +101,7 @@ export default function ContactUs() {
                 <h3 className="font-semibold">Website</h3>
               </div>
               <p className="text-muted-foreground">
-                Dragon AI Image
+                Dragflow ai
               </p>
             </div>
 

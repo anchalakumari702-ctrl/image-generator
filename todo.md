@@ -155,7 +155,8 @@
 - [x] Configure SEO and meta tags
 - [x] Create sitemap.xml for Google indexing
 - [x] Create robots.txt for search engines
-- [ ] Test Google Search Console integration
+- [x] Verify live site has updated branding (Dragflow ai) and AdSense tags
+- [ ] Submit sitemap to Google Search Console
 - [ ] Verify AdSense eligibility requirements met
 - [ ] Submit site for AdSense verification
-- [ ] Monitor AdSense approval status
+- [ ] Monitor AdSense approval status (check after 5-7 days)

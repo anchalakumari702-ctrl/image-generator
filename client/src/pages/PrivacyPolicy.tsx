@@ -13,7 +13,7 @@ export default function PrivacyPolicy() {
             <div className="w-8 h-8 rounded-lg bg-accent flex items-center justify-center">
               <span className="text-white font-bold">✨</span>
             </div>
-            <h1 className="text-xl font-bold">Dragon AI Image</h1>
+            <h1 className="text-xl font-bold">Dragflow ai</h1>
           </div>
           <Button
             onClick={() => setLocation("/")}
@@ -36,7 +36,7 @@ export default function PrivacyPolicy() {
           <section className="mb-8">
             <h2 className="text-2xl font-bold mb-4">1. Introduction</h2>
             <p className="text-muted-foreground mb-4">
-              Dragon AI Image ("we," "us," "our," or "Company") operates the Dragon AI Image website and services. This Privacy Policy explains how we collect, use, disclose, and otherwise handle your information when you visit our website and use our services.
+              Dragflow ai ("we," "us," "our," or "Company") operates the Dragflow ai website and services. This Privacy Policy explains how we collect, use, disclose, and otherwise handle your information when you visit our website and use our services.
             </p>
           </section>
 
@@ -74,7 +74,7 @@ export default function PrivacyPolicy() {
           <section className="mb-8">
             <h2 className="text-2xl font-bold mb-4">4. Google AdSense</h2>
             <p className="text-muted-foreground mb-4">
-              Dragon AI Image uses Google AdSense to display advertisements on our website. Google AdSense may use cookies and other technologies to serve ads based on your previous visits to this website and other websites. You can opt out of personalized advertising by visiting Google's Ads Settings.
+              Dragflow ai uses Google AdSense to display advertisements on our website. Google AdSense may use cookies and other technologies to serve ads based on your previous visits to this website and other websites. You can opt out of personalized advertising by visiting Google's Ads Settings.
             </p>
           </section>
 
@@ -141,7 +141,7 @@ export default function PrivacyPolicy() {
             <div className="bg-card p-4 rounded-lg border border-border">
               <p className="text-muted-foreground">
                 <strong>Email:</strong> aicocode25@gmail.com<br />
-                <strong>Website:</strong> Dragon AI Image
+                <strong>Website:</strong> Dragflow ai
               </p>
             </div>
           </section>

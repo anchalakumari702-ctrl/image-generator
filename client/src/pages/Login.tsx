@@ -58,7 +58,7 @@ export default function Login() {
             <div className="w-10 h-10 rounded-lg bg-accent flex items-center justify-center">
               <span className="text-white font-bold text-lg">✨</span>
             </div>
-            <h1 className="text-2xl font-bold">Dragon AI Image</h1>
+            <h1 className="text-2xl font-bold">Dragflow ai</h1>
           </div>
           <p className="text-muted-foreground">Sign in to create amazing images</p>
         </div>

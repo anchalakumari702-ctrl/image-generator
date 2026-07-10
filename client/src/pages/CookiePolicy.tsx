@@ -13,7 +13,7 @@ export default function CookiePolicy() {
             <div className="w-8 h-8 rounded-lg bg-accent flex items-center justify-center">
               <span className="text-white font-bold">✨</span>
             </div>
-            <h1 className="text-xl font-bold">Dragon AI Image</h1>
+            <h1 className="text-xl font-bold">Dragflow ai</h1>
           </div>
           <Button
             onClick={() => setLocation("/")}
@@ -43,7 +43,7 @@ export default function CookiePolicy() {
           <section className="mb-8">
             <h2 className="text-2xl font-bold mb-4">2. How We Use Cookies</h2>
             <p className="text-muted-foreground mb-4">
-              Dragon AI Image uses cookies for the following purposes:
+              Dragflow ai uses cookies for the following purposes:
             </p>
             <ul className="list-disc list-inside text-muted-foreground space-y-2 mb-4">
               <li><strong>Authentication:</strong> To keep you logged in to your account</li>
@@ -103,7 +103,7 @@ export default function CookiePolicy() {
           <section className="mb-8">
             <h2 className="text-2xl font-bold mb-4">7. Consent</h2>
             <p className="text-muted-foreground mb-4">
-              By using Dragon AI Image, you consent to our use of cookies as described in this Cookie Policy. If you do not consent to our use of cookies, please disable cookies in your browser settings.
+              By using Dragflow ai, you consent to our use of cookies as described in this Cookie Policy. If you do not consent to our use of cookies, please disable cookies in your browser settings.
             </p>
           </section>
 
@@ -122,7 +122,7 @@ export default function CookiePolicy() {
             <div className="bg-card p-4 rounded-lg border border-border">
               <p className="text-muted-foreground">
                 <strong>Email:</strong> aicocode25@gmail.com<br />
-                <strong>Website:</strong> Dragon AI Image
+                <strong>Website:</strong> Dragflow ai
               </p>
             </div>
           </section>

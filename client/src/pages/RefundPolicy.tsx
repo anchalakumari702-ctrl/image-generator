@@ -13,7 +13,7 @@ export default function RefundPolicy() {
             <div className="w-8 h-8 rounded-lg bg-accent flex items-center justify-center">
               <span className="text-white font-bold">✨</span>
             </div>
-            <h1 className="text-xl font-bold">Dragon AI Image</h1>
+            <h1 className="text-xl font-bold">Dragflow ai</h1>
           </div>
           <Button
             onClick={() => setLocation("/")}
@@ -36,7 +36,7 @@ export default function RefundPolicy() {
           <section className="mb-8">
             <h2 className="text-2xl font-bold mb-4">1. Refund Eligibility</h2>
             <p className="text-muted-foreground mb-4">
-              Dragon AI Image offers refunds for premium subscriptions and paid services under the following conditions:
+              Dragflow ai offers refunds for premium subscriptions and paid services under the following conditions:
             </p>
             <ul className="list-disc list-inside text-muted-foreground space-y-2 mb-4">
               <li>Refund requests must be made within 30 days of the original purchase date</li>
@@ -90,7 +90,7 @@ export default function RefundPolicy() {
           <section className="mb-8">
             <h2 className="text-2xl font-bold mb-4">6. Exceptional Circumstances</h2>
             <p className="text-muted-foreground mb-4">
-              Dragon AI Image reserves the right to consider refund requests outside the standard 30-day window in exceptional circumstances, such as:
+              Dragflow ai reserves the right to consider refund requests outside the standard 30-day window in exceptional circumstances, such as:
             </p>
             <ul className="list-disc list-inside text-muted-foreground space-y-2 mb-4">
               <li>Service outages or technical issues preventing service use</li>
@@ -109,7 +109,7 @@ export default function RefundPolicy() {
           <section className="mb-8">
             <h2 className="text-2xl font-bold mb-4">8. Changes to This Policy</h2>
             <p className="text-muted-foreground mb-4">
-              Dragon AI Image reserves the right to modify this Refund Policy at any time. Changes will be effective immediately upon posting to the website. Your continued use of the service following the posting of revised terms means that you accept and agree to the changes.
+              Dragflow ai reserves the right to modify this Refund Policy at any time. Changes will be effective immediately upon posting to the website. Your continued use of the service following the posting of revised terms means that you accept and agree to the changes.
             </p>
           </section>
 
@@ -121,7 +121,7 @@ export default function RefundPolicy() {
             <div className="bg-card p-4 rounded-lg border border-border">
               <p className="text-muted-foreground">
                 <strong>Email:</strong> aicocode25@gmail.com<br />
-                <strong>Website:</strong> Dragon AI Image
+                <strong>Website:</strong> Dragflow ai
               </p>
             </div>
           </section>
