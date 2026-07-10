@@ -1,0 +1,18 @@
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /admin/
+
+# Google AdSense crawler
+User-agent: Googlebot
+Allow: /
+
+# Specific rules for search engines
+User-agent: Bingbot
+Allow: /
+
+User-agent: Slurp
+Allow: /
+
+# Sitemap location
+Sitemap: https://dragflow.ai/sitemap.xml
