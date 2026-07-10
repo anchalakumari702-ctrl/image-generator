@@ -41,7 +41,7 @@ async function startServer() {
   let setupVite: any = null;
   if (process.env.NODE_ENV === "development") {
     try {
-      setupVite = (await import("./vite")).setupVite;
+      setupVite = (await import("./vite-dev")).setupVite;
     } catch (error) {
       console.warn("[Server] Failed to load Vite (expected in production):", error);
     }
