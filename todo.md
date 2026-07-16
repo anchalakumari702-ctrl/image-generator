@@ -156,7 +156,8 @@
 - [x] Create sitemap.xml for Google indexing
 - [x] Create robots.txt for search engines
 - [x] Verify live site has updated branding (Dragflow ai) and AdSense tags
+- [x] Redeploy to Manus hosting (click Publish button)
+- [x] Verify live site has Dragflow ai branding and AdSense tags
 - [ ] Submit sitemap to Google Search Console
-- [ ] Verify AdSense eligibility requirements met
 - [ ] Submit site for AdSense verification
 - [ ] Monitor AdSense approval status (check after 5-7 days)
