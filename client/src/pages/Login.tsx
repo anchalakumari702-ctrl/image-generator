@@ -38,7 +38,8 @@ export default function Login() {
   const handleGoogleLogin = async () => {
     try {
       setIsSubmitting(true);
-      await loginWithGoogle();
+      const user = await loginWithGoogle();
+      if (!user) return;
       toast.success("Logged in with Google!");
       setLocation("/");
     } catch (err: any) {

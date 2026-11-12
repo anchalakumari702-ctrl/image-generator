@@ -179,3 +179,12 @@
 - [x] Deploy the current frontend to the clean `.web.app` URL
 - [x] Verify branding and URL
 - [x] Document the new URL and any Firebase authorized-domain step
+
+## Firebase Cleanup and Auth/API Fix
+- [x] Attempt deletion of old Hosting site `prince-f7668` (Firebase blocks deletion of the default site)
+- [x] Delete old Hosting site `prince-f7668-6831e`
+- [x] Verify `dragonimage` is the only non-default active Hosting site
+- [x] Implement the mobile redirect and clearer Firebase Auth error handling
+- [ ] Add `dragonimage.web.app` to Firebase Authorized Domains and verify mobile Google sign-in
+- [ ] Verify image-generation API returns JSON from the clean domain after backend publish
+- [x] Document the Firebase project ID visibility and safe client-config explanation

@@ -7,8 +7,27 @@ import {
   User,
   GoogleAuthProvider,
   signInWithPopup,
+  signInWithRedirect,
 } from "firebase/auth";
 import { auth } from "@/lib/firebase";
+
+function formatAuthError(error: any, fallback: string) {
+  switch (error?.code) {
+    case "auth/user-cancelled":
+      return "Google sign-in cancel ho gaya. Google button dobara press karke account select karein.";
+    case "auth/popup-closed-by-user":
+      return "Google sign-in window band ho gayi. Dobara try karein.";
+    case "auth/unauthorized-domain":
+      return "Is website domain ko Firebase Authentication ke Authorized domains me add karna zaroori hai.";
+    case "auth/operation-not-allowed":
+      return "Firebase Console me Email/Password ya Google sign-in provider enable nahi hai.";
+    case "auth/invalid-credential":
+    case "auth/invalid-login-credentials":
+      return "Email ya password galat hai.";
+    default:
+      return error?.message || fallback;
+  }
+}
 
 interface AuthState {
   user: User | null;
@@ -63,7 +82,7 @@ export const useFirebaseAuth = () => {
       localStorage.setItem("firebaseToken", idToken);
       return result.user;
     } catch (error: any) {
-      const errorMessage = error.message || "Signup failed";
+      const errorMessage = formatAuthError(error, "Signup failed");
       setAuthState((prev) => ({ ...prev, error: errorMessage }));
       throw error;
     } finally {
@@ -80,7 +99,7 @@ export const useFirebaseAuth = () => {
       localStorage.setItem("firebaseToken", idToken);
       return result.user;
     } catch (error: any) {
-      const errorMessage = error.message || "Login failed";
+      const errorMessage = formatAuthError(error, "Login failed");
       setAuthState((prev) => ({ ...prev, error: errorMessage }));
       throw error;
     } finally {
@@ -92,13 +111,21 @@ export const useFirebaseAuth = () => {
     try {
       setAuthState((prev) => ({ ...prev, loading: true, error: null }));
       const provider = new GoogleAuthProvider();
+      const isMobile = typeof window !== "undefined" &&
+        window.matchMedia("(max-width: 768px)").matches;
+      if (isMobile) {
+        // Redirect is more reliable than a popup inside mobile browsers and
+        // avoids auth/user-cancelled caused by popup blocking/closing.
+        await signInWithRedirect(auth, provider);
+        return null;
+      }
       const result = await signInWithPopup(auth, provider);
       // Get token immediately after Google login
       const idToken = await result.user.getIdToken(true);
       localStorage.setItem("firebaseToken", idToken);
       return result.user;
     } catch (error: any) {
-      const errorMessage = error.message || "Google login failed";
+      const errorMessage = formatAuthError(error, "Google login failed");
       setAuthState((prev) => ({ ...prev, error: errorMessage }));
       throw error;
     } finally {
@@ -113,7 +140,7 @@ export const useFirebaseAuth = () => {
       localStorage.removeItem("firebaseUser");
       await signOut(auth);
     } catch (error: any) {
-      const errorMessage = error.message || "Logout failed";
+      const errorMessage = formatAuthError(error, "Logout failed");
       setAuthState((prev) => ({ ...prev, error: errorMessage }));
       throw error;
     } finally {

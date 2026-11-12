@@ -46,3 +46,13 @@ dragonimage.web.app
 ```
 
 Keep `prince-f7668.web.app` only if you still want the old URL to remain usable. The old site has not been deleted.
+
+## Cleanup and Auth troubleshooting
+
+- Deleted secondary site `prince-f7668-6831e.web.app`.
+- Firebase does not allow deleting the project's default Hosting site `prince-f7668.web.app`; this is a Firebase platform restriction. It is no longer used for deployment.
+- `dragonimage.web.app` is the active clean Hosting site.
+- The Firebase browser config contains `apiKey`, `projectId`, `appId`, and messaging IDs. These are public client identifiers, not private secrets. Private Admin keys and image-generation API keys must stay server-side.
+- The login hook now uses mobile redirect sign-in instead of popup sign-in and shows clearer messages for `auth/user-cancelled`, popup closure, unauthorized domain, and disabled providers.
+- Add `dragonimage.web.app` in Firebase Console → Authentication → Settings → Authorized domains. Without this, Firebase Auth can reject the clean domain.
+- The image-generation API still depends on publishing the updated Manus backend CORS change; Firebase Hosting alone cannot run the Express/tRPC server.
