@@ -38,10 +38,12 @@ queryClient.getMutationCache().subscribe(event => {
   }
 });
 
+const apiBaseUrl = (import.meta.env.VITE_API_BASE_URL ?? "").replace(/\/$/, "");
+
 const trpcClient = trpc.createClient({
   links: [
     httpBatchLink({
-      url: "/api/trpc",
+      url: `${apiBaseUrl}/api/trpc`,
       transformer: superjson,
       async fetch(input, init) {
         // Get Firebase token from localStorage
