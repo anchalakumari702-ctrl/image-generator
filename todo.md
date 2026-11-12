@@ -161,3 +161,13 @@
 - [ ] Submit sitemap to Google Search Console
 - [ ] Submit site for AdSense verification
 - [ ] Monitor AdSense approval status (check after 5-7 days)
+
+## Firebase Hosting Deployment Attempt
+- [x] Inspect Firebase Hosting and Functions configuration
+- [x] Verify Firebase project ID and available CLI authentication
+- [x] Build the production frontend/backend and check for errors
+- [x] Confirm Firebase Hosting serves the frontend correctly
+- [x] Deploy the frontend to Firebase Hosting
+- [x] Verify the deployed URL and detect the API route limitation
+- [x] Record remaining backend and user-side Firebase Console steps
+- [ ] Connect `/api/trpc` to a free backend (Manus or another compatible server)

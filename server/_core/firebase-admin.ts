@@ -15,7 +15,7 @@ export function initializeFirebaseAdmin() {
     // Initialize with default credentials (works in Cloud Run, App Engine, etc.)
     // For local development, set GOOGLE_APPLICATION_CREDENTIALS env var
     adminApp = admin.initializeApp({
-      projectId: "satyamo-c2c21",
+      projectId: process.env.FIREBASE_PROJECT_ID || process.env.GCLOUD_PROJECT || "prince-f7668",
     });
 
     console.log("[Firebase Admin] Initialized successfully");
