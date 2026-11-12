@@ -2,6 +2,14 @@
   "projects": {
     "default": "prince-f7668"
   },
-  "targets": {},
+  "targets": {
+    "prince-f7668": {
+      "hosting": {
+        "clean": [
+          "dragonimage"
+        ]
+      }
+    }
+  },
   "etags": {}
 }

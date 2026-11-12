@@ -26,3 +26,23 @@ Expected response headers include:
 Access-Control-Allow-Origin: https://prince-f7668.web.app
 Access-Control-Allow-Credentials: true
 ```
+
+## Clean Hosting site
+
+- Clean Firebase Hosting site created: `dragonimage`
+- Clean URL: https://dragonimage.web.app
+- Deployment verified: HTTP 200
+- Branding verified: `Dragflow ai - AI Image Generator | Create Stunning Images with AI`
+- SPA route fallback verified: `/privacy` returns the React app
+- Frontend bundle still points to the free Manus backend API
+- Backend CORS source now includes `https://dragonimage.web.app`; the updated Manus backend must be published before that live CORS change takes effect
+
+### Firebase Console action
+
+In Firebase Console, open **Authentication → Settings → Authorized domains** and add:
+
+```text
+dragonimage.web.app
+```
+
+Keep `prince-f7668.web.app` only if you still want the old URL to remain usable. The old site has not been deleted.

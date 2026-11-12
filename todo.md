@@ -171,3 +171,11 @@
 - [x] Verify the deployed URL and detect the API route limitation
 - [x] Record remaining backend and user-side Firebase Console steps
 - [ ] Connect `/api/trpc` to a free backend (Manus or another compatible server)
+
+## Clean Firebase Hosting Domain
+- [x] Check availability of `dragonimage` Hosting site ID
+- [x] Create the clean site ID, or fall back to `firedragon`
+- [x] Point Firebase Hosting config to the new site
+- [x] Deploy the current frontend to the clean `.web.app` URL
+- [x] Verify branding and URL
+- [x] Document the new URL and any Firebase authorized-domain step

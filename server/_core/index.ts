@@ -50,6 +50,7 @@ async function startServer() {
   const app = express();
   const server = createServer(app);
   const allowedOrigins = new Set([
+    "https://dragonimage.web.app",
     "https://prince-f7668.web.app",
     "https://prince-f7668.firebaseapp.com",
     "http://localhost:3000",

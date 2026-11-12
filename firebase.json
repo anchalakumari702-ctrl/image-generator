@@ -1,5 +1,6 @@
 {
-  "hosting": {
+  "hosting": [{
+    "target": "clean",
     "public": "dist/public",
     "ignore": [
       "firebase.json",
@@ -41,7 +42,7 @@
         ]
       }
     ]
-  },
+  }],
   "functions": {
     "source": "functions",
     "runtime": "nodejs22"
